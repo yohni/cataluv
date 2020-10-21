@@ -1,0 +1,20 @@
+// colors
+$originWhite: #FFFFFF
+$originBlack: #000000
+$turnBlack: #272727
+$originGrey: #9E9E9E
+$smoothGrey: #C4C4C4
+$darkGrey: #525252
+$giantPink: #FF005C
+
+// breakpoints
+$sm: 576px
+$md: 768px
+$lg: 992px
+$xl: 1200px
+
+@mixin breakpoint-down($size)
+  @media (max-width: $size) { @content }
+
+@mixin breakpoint-up($size)
+  @media (min-width: $size) { @content }

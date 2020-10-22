@@ -23,7 +23,9 @@
         <div class="product__detail__size size label">
           <div class="size__label">Size</div>
           <div class="size__value value">
-            <span v-for="item in data.size" :key="item">{{ item }},</span>
+            <span v-for="(item, idx) in data.size" :key="item"
+              >{{ item }}<span v-if="data.size.length - 1 > idx">, </span>
+            </span>
           </div>
         </div>
         <div class="product__detail__material material label">
@@ -60,24 +62,20 @@ export default {
     Container,
     ButtonFav,
   },
-  layout: 'detail',
-  // async fetch() {
-  //   const { id } = this.$route.params
-  //   const datatemp = await this.$axios
-  //     .get(`https://cataluv-94a78.firebaseio.com/product/${id}.json`)
-  //     .then((resp) => {
-  //       this.$store.dispatch('fetchCategories')
-  //     })
-  //   this.data = datatemp.data
-  // },
+  async fetch() {
+    const { id } = this.$route.params
+    this.data = await this.$axios
+      .get(`https://cataluv-94a78.firebaseio.com/product/${id}.json`)
+      .then((resp) => {
+        return resp.data
+      })
+  },
   data() {
     return {
       data: null,
     }
   },
   created() {
-    const { id } = this.$route.params
-    this.fetchProduct(id)
     this.$store.dispatch('fetchCategories')
   },
   methods: {
@@ -93,6 +91,25 @@ export default {
       return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
     },
   },
+  head() {
+    return {
+      title: this.data && this.data.name + ' | Cataluv - Shop for moslem wears',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content:
+            'Mix and create your own fashion and let the world now that you are the most colorfull one.',
+        },
+        {
+          hid: 'og:image',
+          name: 'og:image',
+          content: this.data && this.data.images[0].url,
+        },
+      ],
+    }
+  },
+  layout: 'detail',
 }
 </script>
 
@@ -108,7 +125,6 @@ export default {
 
   &__image
     max-width: 40%
-    overflow: hidden
     padding: 0 0 0 88px
 
     @include breakpoint-down($md)

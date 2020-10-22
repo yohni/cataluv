@@ -3,7 +3,7 @@
     <Container class="nav__container">
       <div class="nav__content">
         <img
-          src="/images/logo__cataluv.svg"
+          src="/cataluv/images/logo__cataluv.svg"
           alt=""
           class="nav__content__brand"
         />
@@ -47,5 +47,5 @@ export default {
       cursor: pointer
       transition: all .2s
       position: absolute
-      left: 24px
+      left: 0
 </style>

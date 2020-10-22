@@ -1,11 +1,21 @@
 export default {
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
-    title: 'product-catalog',
+    title: 'Cataluv - Shop for moslem wears',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
+      {
+        hid: 'description',
+        name: 'description',
+        content:
+          'Mix and create your own fashion and let the world now that you are the most colorfull one.',
+      },
+      {
+        hid: 'og:image',
+        name: 'og:image',
+        content: 'https://yohni.github.io/cataluv/images/logo__cataluv.svg',
+      },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },

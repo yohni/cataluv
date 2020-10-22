@@ -7,17 +7,7 @@
         <div class="card__body__info__price">IDR {{ formatPrice(price) }}</div>
       </div>
       <div class="card__body__action">
-        <button
-          type="button"
-          class="card__body__action__fav fav"
-          @click="setFavorite"
-        >
-          <span
-            class="material-icons fav__icon"
-            :class="{ fav__icon__favorited: favorite }"
-            >{{ !favorite ? 'favorite_border' : 'favorite' }}</span
-          >
-        </button>
+        <ButtonFav class="card__body__action__fav" />
         <button class="card__body__action__buy">Buy</button>
       </div>
     </div>
@@ -25,8 +15,13 @@
 </template>
 
 <script>
+import ButtonFav from '@/components/ButtonFav.vue'
+
 export default {
   name: 'ProductCard',
+  components: {
+    ButtonFav,
+  },
   props: ['image', 'name', 'price'],
   data() {
     return {
@@ -88,19 +83,6 @@ export default {
       display: flex
       align-items: center
 
-      .fav
-        margin-right: 14px
-        border: none
-        outline: none
-        background: none
-        cursor: pointer
-
-        &__icon
-          color: $smoothGrey
-          transition: all .2s
-
-          &__favorited
-            color: $giantPink
       &__buy
         border: none
         outline: none

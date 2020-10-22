@@ -1,5 +1,5 @@
 <template>
-  <button type="button" class="fav" @click="setFavorite">
+  <button type="button" class="fav" @click.prevent="setFavorite">
     <span
       class="material-icons fav__icon"
       :class="{ fav__icon__favorited: favorite }"

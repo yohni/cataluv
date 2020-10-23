@@ -12,9 +12,20 @@ export default {
           'Mix and create your own fashion and let the world now that you are the most colorfull one.',
       },
       {
+        hid: 'og:title',
+        property: 'og:title',
+        content: 'Cataluv - Shop for moslem wears',
+      },
+      {
+        hid: 'og:description',
+        property: 'og:description',
+        content:
+          'Mix and create your own fashion and let the world now that you are the most colorfull one.',
+      },
+      {
         hid: 'og:image',
-        name: 'og:image',
-        content: 'https://yohni.github.io/cataluv/images/logo__cataluv.svg',
+        property: 'og:image',
+        content: '/cataluv/images/logo__cataluv.svg',
       },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],

@@ -1,9 +1,10 @@
 <template>
-  <!-- <div v-if="$fetchState.pending" class="fetch__pending">Please Wait</div>
-  <div v-else-if="$fetchState.error" class="fetch__failed">
+  <!-- <div v-if="$fetchState.pending" class="fetch__pending">Please Wait</div> -->
+  <!-- <div v-else-if="$fetchState.error" class="fetch__failed">
     Fetching data failed
   </div> -->
-  <Container>
+  <SplashScreen v-if="$fetchState.pending" />
+  <Container v-else>
     <div v-if="data" class="product">
       <div class="product__image">
         <ImagePrev :images="data && data.images" />
@@ -54,6 +55,7 @@
 import ImagePrev from '@/components/ImagePrev.vue'
 import Container from '@/components/MyContainer.vue'
 import ButtonFav from '@/components/ButtonFav.vue'
+import SplashScreen from '@/components/SplashScreen.vue'
 
 export default {
   name: 'Product',
@@ -61,6 +63,7 @@ export default {
     ImagePrev,
     Container,
     ButtonFav,
+    SplashScreen,
   },
   async fetch() {
     const { id } = this.$route.params
@@ -102,8 +105,14 @@ export default {
             'Mix and create your own fashion and let the world now that you are the most colorfull one.',
         },
         {
+          hid: 'og:title',
+          property: 'og:title',
+          content:
+            this.data && this.data.name + ' | Cataluv - Shop for moslem wears',
+        },
+        {
           hid: 'og:image',
-          name: 'og:image',
+          property: 'og:image',
           content: this.data && this.data.images[0].url,
         },
       ],
